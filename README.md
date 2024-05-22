@@ -88,24 +88,29 @@ After you've entered your seed pharse and pass pharse, you wallet should be succ
 
 # Run miner
 ## 1xGPUs
-Run miner: ```
+Run miner: 
+```
 pm2 start "CUDA_VISIBLE_DEVICES=0 make run addr=YOUR_SUBWALLET_1" --name nimble 
 ```
 See log: ```
  pm2 logs nimble
 ```
 ## 2xGPUs
-Run miner with first gpu: ```
+Run miner with first gpu: 
+```
 pm2 start "CUDA_VISIBLE_DEVICES=0 make run addr=YOUR_SUBWALLET_1" --name nimble_1
 ```
-See log: ```
+See log: 
+```
 pm2 logs nimble_1
 ```
 
-Run miner with second gpu: ```
+Run miner with second gpu: 
+```
 pm2 start "CUDA_VISIBLE_DEVICES=1 make run addr=YOUR_SUBWALLET_2" --name nimble_2 
 ```
-See log: ```
+See log: 
+```
 pm2 logs nimble_2
  ```
 
