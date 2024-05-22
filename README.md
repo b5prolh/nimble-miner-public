@@ -92,8 +92,9 @@ Run miner:
 ```
 pm2 start "CUDA_VISIBLE_DEVICES=0 make run addr=YOUR_SUBWALLET_1" --name nimble 
 ```
-See log: ```
- pm2 logs nimble
+See log: 
+```
+pm2 logs nimble
 ```
 ## 2xGPUs
 Run miner with first gpu: 
