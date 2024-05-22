@@ -94,7 +94,7 @@ See log: ``` pm2 logs nimble```
 Run miner with first gpu: ```pm2 start "CUDA_VISIBLE_DEVICES=0 make run addr=YOUR_SUBWALLET_1" --name nimble_1```
 See log: ``` pm2 logs nimble_1 ```
 
-Run miner with second gpu: ```pm2 start "CUDA_VISIBLE_DEVICES=1 make run addr=YOUR_SUBWALLET_1" --name nimble_2 ```
+Run miner with second gpu: ```pm2 start "CUDA_VISIBLE_DEVICES=1 make run addr=YOUR_SUBWALLET_2" --name nimble_2 ```
 See log: ``` pm2 logs nimble_2 ```
 
 If u want see logs of all session, use 
