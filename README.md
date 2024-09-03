@@ -41,6 +41,12 @@ upgrade GNU LIBC >= 2.34
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt install curl && sudo apt-get install -y libcurl4-openssl-dev && sudo apt install -y update-manager-core && sudo do-release-upgrade -f DistUpgradeViewNonInteractive
 ```
+After run success, run 
+```
+ldd --version
+```
+the ldd version should >= 2.34
+![image](https://github.com/user-attachments/assets/bb36b155-e25b-40af-8daf-007447a66b07)
 
 # Create serivce config file
 ```
