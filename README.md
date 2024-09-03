@@ -15,7 +15,7 @@ GNU LIBC >= 2.34
 ```
 
 # Installation
-This guideline will use pm2 to handle session to run with multiple GPUs like 2x4090, 4x3090... that rent on [VAST](https://cloud.vast.ai/?ref_id=120915)
+This guideline to help new guys can run [new Nimble mining version ](https://github.com/nimble-technology/nimble-miner-public) with few step setup. 
 
 # Rent GPUs
 This guidline working good with **Cuda:12.0.1-Devel-Ubuntu22.04** template for only one times to copy and paste
