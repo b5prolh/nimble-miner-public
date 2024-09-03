@@ -40,6 +40,10 @@ Copy the generated Nimble address and save your wallet information in a safe pla
 ```
 sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt install curl && sudo apt-get install -y libcurl4-openssl-dev && sudo apt install -y update-manager-core && sudo do-release-upgrade -f DistUpgradeViewNonInteractive
 ```
+If u see this, just press enter for default
+
+![image](https://github.com/user-attachments/assets/c6274b20-d6c0-42ae-8ffa-f3a9d9b0fab3)
+
 After run success, run 
 ```
 ldd --version
