@@ -27,11 +27,14 @@ For cheapest price, using gpus that rent on [CLORE](https://clore.ai?ref_id=sblc
 
 # Generate a wallet
 SKIP THIS STEP IF U ALREADY HAVE WALLET
+
+## Install wallet cli
 ``` 
-cd && cd $HOME/nimble && cd wallet-public
-
-./nimble-networkd keys add YOUR_WALLET_NAME
-
+git clone https://github.com/nimble-technology/wallet-public.git && cd wallet-public && make install
+```
+## Create wallet
+```
+cd && cd wallet-public ./nimble-networkd keys add YOUR_WALLET_NAME
 ```
 After you've entered your passphrase, your wallet shoud be successfully created and the “address: nimblexxxx” output can confirm that!
 Copy the generated Nimble address and save your wallet information in a safe place.
