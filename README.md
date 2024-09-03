@@ -1,5 +1,5 @@
 # Nimble Miner Setup Guide
-Welcome to the Nimble Miner setup guide. This document is designed to help you get started with the Nimble Miner, a tool that fork from https://github.com/nimble-technology/nimble-miner-public to show your task complete logs. I've structured this guide to make the setup process as straightforward as possible.
+Welcome to the Nimble Miner setup guide. This document is designed to help you get started with the Nimble Miner. I've structured this guide to make the setup process as straightforward as possible.
 
 # Introduction
 Nimble Miner allows users to contribute to the Nimble network by performing AI inference tasks in exchange for rewards. This guide will take you through the necessary steps to set up your mining operation.
