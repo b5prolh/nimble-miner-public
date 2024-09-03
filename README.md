@@ -46,6 +46,7 @@ After run success, run
 ldd --version
 ```
 the ldd version should >= 2.34
+
 ![image](https://github.com/user-attachments/assets/bb36b155-e25b-40af-8daf-007447a66b07)
 
 # Create serivce config file
