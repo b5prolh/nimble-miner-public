@@ -4,13 +4,14 @@ Welcome to the Nimble Miner setup guide. This document is designed to help you g
 # Introduction
 Nimble Miner allows users to contribute to the Nimble network by performing AI inference tasks in exchange for rewards. This guide will take you through the necessary steps to set up your mining operation.
 
-For curious readers to learn more about how to start please read it first https://discord.com/channels/1139328143400894604/1165053157391478825/1225876548255744121
+For curious readers to learn more about how to start please read it first [https://discord.com/channels/1139328143400894604/1165053157391478825/1225876548255744121](https://discord.com/channels/1139328143400894604/1256018146561757184/1256021479385071658)
 
 # System Specifications
-``` RTX 3080+ GPU
-Core i7 13700
-16GB RAM
-20 GB disk space 
+``` Linux OS
+Nvidia GPU with Cuda
+4GB RAM
+1 GB disk space 
+GNU LIBC >= 2.34
 ```
 
 # Installation
@@ -22,52 +23,10 @@ This guidline working good with **Cuda:12.0.1-Devel-Ubuntu22.04** template for o
 
 If this is first time you use vast and dont know how to connect, please see it first: https://www.youtube.com/watch?v=KraLVgFS4vU
 
-# Install
-Just coppy all these command and past to your terminal. Make sure u select correct template **Cuda:12.0.1-Devel-Ubuntu22.04**. If not, should copy line by line
+For cheapest price, using gpus that rent on [CLORE](https://clore.ai?ref_id=sblcyoxd) is the good choice. In this tutorial, I will using gpus that rent on clore.
 
-```
-apt-get update -y && apt-get upgrade -y && apt install build-essential
-
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install pm2 -g 
-
-sudo rm -rf /usr/local/go
-curl https://dl.google.com/go/go1.22.1.linux-amd64.tar.gz | sudo tar -C/usr/local -zxvf - ;
-cat <<'EOF' >>$HOME/.bashrc
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export GO111MODULE=on
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-EOF
-source $HOME/.bashrc
-
-cd
-mkdir -p ~/miniconda3
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
-bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
-rm -rf ~/miniconda3/miniconda.sh
-~/miniconda3/bin/conda init bash
-source $HOME/.bashrc
-
-
-
-conda create -n nimble python=3.11 -y
-conda activate nimble
-
-mkdir $HOME/nimble && cd $HOME/nimble
-
-git clone https://github.com/nimble-technology/wallet-public.git
-
-cd wallet-public
-
-make install
-
-cd  $HOME/nimble
-git clone https://github.com/b5prolh/nimble-miner-public.git
-cd nimble-miner-public
-make install
-source ./nimenv_localminers/bin/activate
-```
 # Generate a wallet
+SKIP THIS STEP IF U ALREADY HAVE WALLET
 ``` 
 cd && cd $HOME/nimble && cd wallet-public
 
@@ -77,76 +36,25 @@ cd && cd $HOME/nimble && cd wallet-public
 After you've entered your passphrase, your wallet shoud be successfully created and the “address: nimblexxxx” output can confirm that!
 Copy the generated Nimble address and save your wallet information in a safe place.
 
-# Recover a wallet
-If you already have seed pharse of wallet, u can recover it by command
+# Install
+upgrade GNU LIBC >= 2.34
 ```
-cd && cd $HOME/nimble && cd wallet-public
-./nimble-networkd keys add YOUR_WALLET_NAME --recover
-```
-
-After you've entered your seed pharse and pass pharse, you wallet should be successfully create and the “address: nimblexxxx” output can confirm that!
-
-# Run miner
-## 1xGPUs
-Run miner: 
-```
-pm2 start "CUDA_VISIBLE_DEVICES=0 make run addr=YOUR_SUBWALLET_1" --name nimble 
-```
-See log: 
-```
-pm2 logs nimble
-```
-## 2xGPUs
-Run miner with first gpu: 
-```
-pm2 start "CUDA_VISIBLE_DEVICES=0 make run addr=YOUR_SUBWALLET_1" --name nimble_1
-```
-See log: 
-```
-pm2 logs nimble_1
+sudo apt update && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt install curl && sudo apt-get install -y libcurl4-openssl-dev && sudo apt install -y update-manager-core && sudo do-release-upgrade -f DistUpgradeViewNonInteractive
 ```
 
-Run miner with second gpu: 
+# Create serivce config file
 ```
-pm2 start "CUDA_VISIBLE_DEVICES=1 make run addr=YOUR_SUBWALLET_2" --name nimble_2 
-```
-See log: 
-```
-pm2 logs nimble_2
- ```
-
-If u want see logs of all session, use 
-``` 
-pm2 logs
+sudo mkdir -p /etc/nimbleservice && sudo echo "NIMBLE_PUBKEY=YOUR_WALLET_ADDRESS" | sudo tee /etc/nimbleservice/nimbleservice.conf
 ```
 
-Run Same for 4xGPus, 8xGPUs, just remember change **CUDA_VISIBLE_DEVICES** number
-
-# Show logs
-Run the command below to show task that complete or fail. This logs save to **my_logs.json** from your local storage. So u should backup it when u destroy your gpu, if not it will be lost.
-``` 
-make logs
+# Clone nimble project
+```
+git clone https://github.com/nimble-technology/nimble-miner-public.git
 ```
 
-![image](https://github.com/b5prolh/nimble-miner-public/assets/18376326/f93ff3b5-f69e-45cd-8553-404519e70f74)
-
-
-# Some command for pm2
-using CTRL + C to close logs session to continue using your terminal
-
-## Start new session
+# Run mining
 ```
-pm2 start "Your_Command" --name YOUR_SESSION_NAME
-```
-
-## See logs
-``` 
-pm2 logs YOUR_SESSION_NAME
-```
-
-## See list session
-``` 
-pm2 list
+cd nimble-miner-public && chmod +x nimbleminer && ./nimbleminer
 ```
 
 # Contact
